@@ -29,7 +29,6 @@ def figura():
     dt = 0.1/beta              # período de amostragem
     Ttotal = numpy.linspace(0, dt*nmax, nmax)
     S, I, R = SIR_nascimento(S0, I0, R0, dt, beta, gamma, mu, nmax)
-    Ttotal = numpy.linspace(0, dt*nmax, nmax)
     fig = plt.figure()
     ax = fig.add_subplot(1, 1, 1)
     ax.plot(Ttotal, S, 'g--', label='Suscetíveis')

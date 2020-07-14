@@ -22,7 +22,7 @@ def curva_infectados_SIR():
     I0 = 50
     R0 = 0
     S0 = N - I0 - R0
-    beta = 1/7                 # taxa de transmissão / dia
+    beta = 0.0477                 # taxa de transmissão / dia
     gamma = 0.03               # taxa de recuperação / dia
     nmax = 1000
     dt = 0.1/beta              # período de amostragem
@@ -43,4 +43,31 @@ def curva_infectados_SIR():
     plt.show()
 
 
-curva_infectados_SIR()
+def figura():
+    Ttotal = 600               # dias
+    N = 10000000                   # Tamanho população
+    I0 = 1000                    # qtd. infectados  p/ n = 0
+    R0 = 0                     # qtd. removidos   p/ n = 0
+    S0 = N - I0 - R0           # qtd. suscetíveis p/ n = 0
+    beta = 0.0511              # taxa de transmissão / dia
+    gamma = 0.025              # taxa de recuperação / dia
+    dt = 0.01/beta              # período de amostragem
+    nmax = int(Ttotal/dt)      # quantidade de amostras
+    Ttotal = numpy.linspace(0, dt*nmax, nmax)
+    S, I, R = SIR(S0, I0, R0, dt, beta, gamma, nmax)
+    Ttotal = numpy.linspace(0, dt*nmax, nmax)
+    fig = plt.figure()
+    ax = fig.add_subplot(1, 1, 1)
+    ax.plot(Ttotal, S, 'g--', label='Suscetíveis')
+    ax.plot(Ttotal, I, 'r--', label='Infectados')
+    ax.plot(Ttotal, R, 'b--', label='Removidos')
+    ax.set_ylabel('Pessoas infectadas')
+    ax.set_xlabel('Tempo (dias)')
+    ax.grid()
+    ax.legend()
+    plt.xlim(0, 400)
+    plt.show()
+
+
+# curva_infectados_SIR()
+figura()
