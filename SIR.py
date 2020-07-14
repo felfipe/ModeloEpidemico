@@ -45,8 +45,8 @@ def curva_infectados_SIR():
 
 def figura():
     Ttotal = 600               # dias
-    N = 10000000                   # Tamanho população
-    I0 = 1000                    # qtd. infectados  p/ n = 0
+    N = 1000                   # Tamanho população
+    I0 = 1                   # qtd. infectados  p/ n = 0
     R0 = 0                     # qtd. removidos   p/ n = 0
     S0 = N - I0 - R0           # qtd. suscetíveis p/ n = 0
     beta = 0.0511              # taxa de transmissão / dia
@@ -65,7 +65,7 @@ def figura():
     ax.set_xlabel('Tempo (dias)')
     ax.grid()
     ax.legend()
-    plt.xlim(0, 400)
+    plt.xlim(0, 600)
     plt.show()
 
 
